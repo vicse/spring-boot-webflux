@@ -1,5 +1,7 @@
 package com.reactive.vos.webflux.app.services;
 
+import com.reactive.vos.webflux.app.dao.CategoriaDao;
+import com.reactive.vos.webflux.app.documents.Categoria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,9 @@ public class ProductoServiceImpl implements ProductoService {
 	
 	@Autowired
 	private ProductoDao dao;
+
+	@Autowired
+	private CategoriaDao categoriaDao;
 
 	@Override
 	public Flux<Producto> findAll() {
@@ -33,6 +38,21 @@ public class ProductoServiceImpl implements ProductoService {
 	@Override
 	public Mono<Void> delete(Producto producto) {
 		return dao.delete(producto);
+	}
+
+	@Override
+	public Flux<Categoria> findAllCategoria() {
+		return categoriaDao.findAll();
+	}
+
+	@Override
+	public Mono<Categoria> findByIdCategoria(String id) {
+		return categoriaDao.findById(id);
+	}
+
+	@Override
+	public Mono<Categoria> saveCategoria(Categoria categoria) {
+		return categoriaDao.save(categoria);
 	}
 
 	@Override

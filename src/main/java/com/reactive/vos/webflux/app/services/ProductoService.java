@@ -1,5 +1,6 @@
 package com.reactive.vos.webflux.app.services;
 
+import com.reactive.vos.webflux.app.documents.Categoria;
 import com.reactive.vos.webflux.app.documents.Producto;
 
 import reactor.core.publisher.Flux;
@@ -18,6 +19,11 @@ public interface ProductoService {
 	public Mono<Producto> save(Producto producto);
 	
 	public Mono<Void> delete(Producto producto);
-	
+
+	public Flux<Categoria> findAllCategoria();
+
+	public Mono<Categoria> findByIdCategoria(String id);
+
+	public Mono<Categoria> saveCategoria(Categoria categoria);
 	
 }
